@@ -2,10 +2,11 @@ version: '3.3'
 services:
     docker-ripper:
         container_name: Ripper
-        build:
-          context: .
-          dockerfile: latest/Dockerfile
-        # image: rix1337/docker-ripper:latest  # using local build for testing
+        # Comment out or remove the build section to prevent rebuilding
+        # build:
+        #   context: .
+        #   dockerfile: latest/Dockerfile
+        image: ggfevans/docker-ripper:notify  # Use your pre-built local image
         volumes:
             #- ./ripper-config:/config:rw # optional - path to the config folder - if not provided, a default config will be used
             - ./ripper-output:/out:rw
