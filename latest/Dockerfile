@@ -7,6 +7,16 @@ ENV DEBIAN_FRONTEND=noninteractive \
     LANGUAGE=en_US.UTF-8 \
     HOME=/root
 
+# Notification system environment variables:
+# NOTIFY_ENABLED=true|false - Enable/disable notification system
+# NOTIFY_PROVIDER=discord|pushover|webhook - Select notification provider
+# NOTIFY_DISCORD_WEBHOOK_URL - Discord webhook URL (required for Discord)
+# NOTIFY_PUSHOVER_API_TOKEN - Pushover API token (required for Pushover)
+# NOTIFY_PUSHOVER_USER_KEY - Pushover user key (required for Pushover)
+# NOTIFY_WEBHOOK_URL - Generic webhook URL (required for webhook provider)
+# NOTIFY_WEBHOOK_METHOD - HTTP method for webhook (default: POST)
+# NOTIFY_WEBHOOK_HEADERS - Custom HTTP headers for webhook (JSON format)
+
 # Disable SSH
 RUN rm -rf /etc/service/sshd /etc/my_init.d/00_regen_ssh_host_keys.sh
 

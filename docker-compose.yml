@@ -33,10 +33,29 @@ services:
             - FILEGROUP=users # optional - defines the group ownership of created files
             - FILEGROUPID=4321 # optional - use along with FILEGROUP to specify group id of created files
             - FILEMODE=g+rw # optional - defines the permissions set on created files
-        #    - KEY=T-eX4mpl3FoQCIORraCfuH3X@qEyMjXXCduqtd8xNt4rjNRZf3Y2BRrIlJqxODbBo@KTW # optional - an officially purchased MakeMKV license key
-        #    - PREFIX=OPTIONAL_WEB_UI_PATH_PREFIX # optional - path prefix for the integrated web ui when commented out or set to /, the web ui will be at the root of the server
-        #    - USER=OPTIONAL_WEB_UI_USERNAME # optional - user name for the integrated web ui (requires PASS to be set) - if not set, the web ui will not require authentication
-        #    - PASS=OPTIONAL_WEB_UI_PASSWORD # optional - password for the integrated web ui (requires USER to be set) - if not set, the web ui will not require authentication
-        #   - POVER_APP_TOKEN=OPTIONAL_APP_TOKEN # optional - supply along with POVER_USER_KEY to enable pushover notifications upon disc rip completion
-        #   - POVER_USER_KEY=OPTIONAL_USER_KEY # optional - supply along with POVER_APP_TOKEN to enable pushover notifications upon disc rip completion
+            
+            #    - KEY=T-eX4mpl3FoQCIORraCfuH3X@qEyMjXXCduqtd8xNt4rjNRZf3Y2BRrIlJqxODbBo@KTW # optional - an officially purchased MakeMKV license key
+            #    - PREFIX=OPTIONAL_WEB_UI_PATH_PREFIX # optional - path prefix for the integrated web ui when commented out or set to /, the web ui will be at the root of the server
+            #    - USER=OPTIONAL_WEB_UI_USERNAME # optional - user name for the integrated web ui (requires PASS to be set) - if not set, the web ui will not require authentication
+            #    - PASS=OPTIONAL_WEB_UI_PASSWORD # optional - password for the integrated web ui (requires USER to be set) - if not set, the web ui will not require authentication
+            
+            # Notification System Configuration (uncomment and configure as needed)
+            #- NOTIFY_ENABLED=true # Enable the notification system
+            #- NOTIFY_PROVIDER=discord # Options: discord, pushover, webhook
+            
+            # Discord Configuration
+            #- NOTIFY_DISCORD_WEBHOOK_URL=https://discord.com/api/webhooks/your/webhook/url
+            
+            # Pushover Configuration
+            #- NOTIFY_PUSHOVER_API_TOKEN=your_api_token
+            #- NOTIFY_PUSHOVER_USER_KEY=your_user_key
+            #- NOTIFY_PUSHOVER_DEVICE=optional_device_name
+            #- NOTIFY_PUSHOVER_PRIORITY=0 # -2 to 2 (emergency=2 requires retry and expire params)
+            #- NOTIFY_PUSHOVER_SOUND=pushover # sound name (default: pushover)
+            
+            # Generic Webhook Configuration
+            #- NOTIFY_WEBHOOK_URL=https://your-webhook-endpoint.com
+            #- NOTIFY_WEBHOOK_METHOD=POST # HTTP method (GET, POST, PUT, etc.)
+            #- NOTIFY_WEBHOOK_HEADERS={"Content-Type": "application/json", "Authorization": "Bearer token"}
+        
         privileged: true
