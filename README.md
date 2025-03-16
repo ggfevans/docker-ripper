@@ -145,7 +145,53 @@ This command performs the same operation as the docker-compose build but require
 
 Remember to periodically pull the latest changes from the git repository to keep your Dockerfile up to date and rebuild the image if any updates have been made.
 
+## Notification System
 
+Docker-Ripper includes a flexible notification system that can alert you about disc detection, ripping progress, and completion events. Get notified when your discs are processed automatically!
+
+### Supported Notification Providers
+
+- **Discord** - Send rich embed messages to Discord channels
+- **Pushover** - Get mobile push notifications
+- **Generic Webhooks** - Integrate with other services or custom endpoints
+
+### Basic Setup
+
+Enable notifications by adding these environment variables to your Docker configuration:
+
+```yaml
+# Core notification settings
+- NOTIFICATION_ENABLED=true
+- NOTIFICATION_PROVIDERS=discord,pushover,webhook  # Use any combination
+- NOTIFICATION_LEVEL=all  # Options: all, error, none
+
+# Provider-specific configuration (example for Discord)
+- DISCORD_ENABLED=true
+- DISCORD_WEBHOOK_URL=https://discord.com/api/webhooks/your-webhook-url
+```
+
+### Example (Docker Compose)
+
+```yaml
+version: '3.3'
+services:
+  docker-ripper:
+    image: rix1337/docker-ripper:latest
+    environment:
+      # Core notification settings
+      - NOTIFICATION_ENABLED=true
+      - NOTIFICATION_PROVIDERS=discord
+      - NOTIFICATION_LEVEL=all
+      
+      # Discord configuration
+      - DISCORD_ENABLED=true
+      - DISCORD_WEBHOOK_URL=https://discord.com/api/webhooks/123456789/abcdef...
+    volumes:
+      - ./config:/config:rw
+      - ./output:/out:rw
+```
+
+For detailed configuration options and troubleshooting, see the [Notification System Documentation](./root/notifications/README.md).
 
 # FAQ
 
